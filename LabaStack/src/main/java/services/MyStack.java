@@ -2,19 +2,20 @@ package services;
 
 import java.util.Random;
 
-public class MyStack implements IMyStack {
-    private Integer[] stackArray;
+public class MyStack<E> {
+    private E[] stackArray;
     private Integer top; // Вершина стека
     Random random = new Random();
 
     public MyStack(Integer s) // Конструктор
     {
-        stackArray = new Integer[s]; // Создание массива
+        //напрямую создать типа E[] нельзя так как для дженериков массив создается во время компиляции
+        stackArray = (E[]) new Object[s]; // Создание массива
         top = -1; // Пока нет ни одного элемента
     }
 
     //добавление элемента в вершину стека
-    public void push(Integer j) // Размещение элемента на вершине стека
+    public void push(E j) // Размещение элемента на вершине стека
     {
 //            stackArray[++top] = j;
 
@@ -23,7 +24,7 @@ public class MyStack implements IMyStack {
         if (top == (stackArray.length - 1)) {
 
             //создаем новый массив в два раза больше прежнего
-            Integer temp[] = new Integer[stackArray.length * 2];
+            E temp[] = (E[]) new Object[stackArray.length * 2];
             int i;
             for (i = 0; i < stackArray.length; i++) {
                 // данные из прежнего копируем в новый
@@ -37,13 +38,13 @@ public class MyStack implements IMyStack {
     }
 
     //удаление элемента из вершины стека
-    public Integer pop() // Извлечение элемента с вершины стека
+    public E pop() // Извлечение элемента с вершины стека
     {
         return stackArray[top--];
     }
 
     //	вывод текущего состояния стека на экран
-    public Integer peek() // Чтение элемента с вершины стека
+    public E peek() // Чтение элемента с вершины стека
     {
         return stackArray[top];
     }
@@ -64,9 +65,9 @@ public class MyStack implements IMyStack {
 
         for (int i = 0; i < count; i++) {
 
-            int x = random.nextInt(100) + 1;
+            Integer x = random.nextInt(100) + 1;
             System.out.println("x= " + x);
-            this.push(x);
+            this.push((E)x);
         }
     }
 }

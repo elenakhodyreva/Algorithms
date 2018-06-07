@@ -8,7 +8,7 @@ import java.util.Scanner;
 public class Program {
     public static void main(String[] args) {
 
-        IMyStack nStack = new MyStack(5);
+        MyStack nStack = new MyStack(5);
         Scanner in = new Scanner(System.in);
         Scanner inDigit = new Scanner(System.in);
         int input = -1;
@@ -25,6 +25,7 @@ public class Program {
             switch (input) {
                 case 1: {
                     //добавить
+                    // проверить на заполненность для статического стека
                     if (!nStack.isFull()) {
 
                         System.out.println("введите число для добавления");
@@ -63,6 +64,7 @@ public class Program {
                 }
                 break;
             }
+
         } while (input != 0);
 
 
