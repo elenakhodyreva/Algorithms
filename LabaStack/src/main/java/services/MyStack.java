@@ -4,14 +4,18 @@ import java.util.Random;
 
 public class MyStack<E> {
     private E[] stackArray;
-    private Integer top; // Вершина стека
+    public Integer top; // Вершина стека
     Random random = new Random();
 
     public MyStack(Integer s) // Конструктор
     {
-        //напрямую создать типа E[] нельзя так как для дженериков массив создается во время компиляции
+        //напрямую создать типа E[] нельзя так как для дженериков память для массива рассчитывается во время компиляции
         stackArray = (E[]) new Object[s]; // Создание массива
         top = -1; // Пока нет ни одного элемента
+    }
+
+    public Integer size(){
+        return top+1;
     }
 
     //добавление элемента в вершину стека
@@ -69,5 +73,14 @@ public class MyStack<E> {
             System.out.println("x= " + x);
             this.push((E)x);
         }
+    }
+
+    public void clear(){
+        stackArray= (E[])new Object[5];
+        top=-1;
+    }
+
+    public Integer capacity(){
+        return stackArray.length;
     }
 }

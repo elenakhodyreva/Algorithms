@@ -1,25 +1,23 @@
 package application;
 
-import services.IMyStack;
 import services.MyStack;
 
 import java.util.Scanner;
 
 public class Program {
     public static void main(String[] args) {
-
-        MyStack nStack = new MyStack(5);
+        MyStack<Integer> nStack = new MyStack<Integer>(5);
         Scanner in = new Scanner(System.in);
         Scanner inDigit = new Scanner(System.in);
         int input = -1;
         int digit;
 
         do {
-            System.out.println("Добавить число -1\n"
-                    + "просмотр вершины стека -2\n"
-                    + "извлечь элемент -3 \n"
-                    + "добавить несколько значений -4 \n"
-                    + "выход - 0");
+            System.out.println("Добавить число -1 "
+                    + "просмотр вершины стека -2 "
+                    + "извлечь элемент -3 "
+                    + "добавить несколько значений -4 "
+                    + "выход - 0\n");
 
             input = in.nextInt();
             switch (input) {
@@ -42,7 +40,6 @@ public class Program {
                     else
                         System.out.println("стек пуст");
                 }
-
                 break;
                 case 3: {
                     //извлечь
@@ -51,9 +48,7 @@ public class Program {
                     else
                         System.out.println("стек пуст");
                 }
-
                 break;
-
                 case 4: {
                     //только для динамического выделения памяти
                     System.out.println("Введите количество значений");
@@ -66,7 +61,5 @@ public class Program {
             }
 
         } while (input != 0);
-
-
     }
 }
